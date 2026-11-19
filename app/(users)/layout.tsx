@@ -5,7 +5,7 @@ interface UsersLayoutProps {
   children: ReactNode;
 }
 
-function UsersLayout({ children }: UsersLayoutProps) {
+export default function UsersLayout({ children }: UsersLayoutProps) {
   return (
     <div className="flex-1 flex flex-col w-full">
       <Header />
@@ -13,5 +13,3 @@ function UsersLayout({ children }: UsersLayoutProps) {
     </div>
   );
 }
-
-export default UsersLayout;
