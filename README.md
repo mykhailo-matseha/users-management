@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Декомпозиція задач:
 
-## Getting Started
+Налаштувати перемикання між сторінками
 
-First, run the development server:
+- Верстка верхніх кнопок-табів (Edit User / Users)
+- Налаштування переходів між сторінками
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Зробити селектори (дропдауни)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Верстка звичайного дропдауна
+- Додавання пошуку всередині списку
+- Зробити вибір кількох варіантів
+- Закріплення вибраних пунктів завжди зверху списку
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Створити сторінку Users
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Верстка сторінки та тексту підказки
+- Додавання фільтрів
+- Скидання фільтрів, якщо обраних департаментів стає менше 3
+- Очищення всіх фільтрів по кліку на іконку кошика
+- Верстка таблиці користувачів
+- Виведення користувачів з урахуванням фільтрів
+- Видалення користувача зі списку по кліку на кошик
 
-## Learn More
+Створити попап Add User
 
-To learn more about Next.js, take a look at the following resources:
+- Верстка попапу
+- Відкриття попапу по кліку на "Add User"
+- Закриття попапу по кнопці "Cancel" та при кліку поза ним
+- Додавання нового користувача
+- Збереження даних у LocalStorage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Створити сторінку Edit User
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Верстка форми з полями
+- Селектор вибору користувача з пошуком
+- Підтягування даних в поля при виборі
+- Кнопка Undo (з'являється при змінах і скидає їх)
+- Кнопка Save (активується при змінах і зберігає користувача)
+- Оновлення даних у LocalStorage після збереження
