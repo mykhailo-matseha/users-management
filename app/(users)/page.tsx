@@ -3,6 +3,7 @@ import UsersFilter, {
   DEFAULT_FILTERS,
   FilterState,
 } from "@/components/users/UsersFilter";
+import UsersTable from "@/components/users/UsersTable";
 import { useUsers } from "@/context/UsersProvider";
 import { useMemo, useState } from "react";
 
@@ -46,6 +47,7 @@ export default function UsersPage() {
         setFilters={setFilters}
         onReset={() => setFilters(DEFAULT_FILTERS)}
       />
+      <UsersTable users={filteredUsers} onDelete={() => {}} />
     </div>
   );
 }

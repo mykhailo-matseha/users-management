@@ -151,7 +151,7 @@ export const INITIAL_USERS: User[] = [
     },
   },
   {
-    id: "3",
+    id: "32",
     name: "Bob Brown",
     status: {
       name: "All statuses",
@@ -167,7 +167,7 @@ export const INITIAL_USERS: User[] = [
     },
   },
   {
-    id: "3",
+    id: "33",
     name: "Charlie Davis",
     status: {
       name: "Active",
@@ -199,7 +199,7 @@ export const INITIAL_USERS: User[] = [
     },
   },
   {
-    id: "4",
+    id: "42",
     name: "Frank Moore",
     status: {
       name: "Active",
@@ -263,7 +263,7 @@ export const INITIAL_USERS: User[] = [
     },
   },
   {
-    id: "8",
+    id: "82",
     name: "Jack Black",
     status: {
       name: "Active",
