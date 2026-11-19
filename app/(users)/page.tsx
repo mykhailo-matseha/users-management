@@ -10,7 +10,7 @@ import { useMemo, useState } from "react";
 
 export default function UsersPage() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
-  const { users } = useUsers();
+  const { users, deleteUser, addUser, updateUser } = useUsers();
 
   const filteredUsers = useMemo(() => {
     const searchQuery = filters.searchQuery?.toLowerCase().trim();
@@ -53,7 +53,7 @@ export default function UsersPage() {
         setFilters={setFilters}
         onReset={() => setFilters(DEFAULT_FILTERS)}
       />
-      <UsersTable users={filteredUsers} onDelete={() => {}} />
+      <UsersTable users={filteredUsers} onDelete={deleteUser} />
     </div>
   );
 }
