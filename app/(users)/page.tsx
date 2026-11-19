@@ -1,3 +1,3 @@
 export default function UsersPage() {
-  return <h1>Users</h1>;
+  return <div className="flex flex-col gap-10"></div>;
 }
