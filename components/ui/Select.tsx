@@ -98,7 +98,7 @@ export default function Select({
           type="button"
           disabled={disabled}
           className={cn(
-            "w-full min-h-12 px-6 py-3.5 border border-border bg-white text-sm font-light transition-colors select-none",
+            "w-full min-h-12 min-w-55 px-6 py-3.5 border border-border bg-white text-sm font-light transition-colors select-none",
             "flex items-center justify-between gap-3 text-left cursor-pointer",
             "hover:border-text focus:outline-none focus:border-text",
             open && "border-text",
@@ -192,7 +192,7 @@ export default function Select({
             </ScrollArea.Viewport>
             <ScrollArea.Scrollbar
               orientation="vertical"
-              className="flex select-none touch-none rounded-ful bg-[#e7ebf4] transition-colors w-1 mr-3"
+              className="flex select-none touch-none rounded-ful bg-[#e7ebf4] transition-colors w-1 mr-3 my-1"
             >
               <ScrollArea.Thumb className="flex-1 bg-text rounded-full" />
             </ScrollArea.Scrollbar>
