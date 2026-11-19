@@ -1,16 +1,11 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  error?: string;
-}
-
 export default function Input({
   className,
-  error,
   disabled,
   ...props
-}: InputProps) {
+}: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <div className="w-full flex flex-col gap-1">
       <input
@@ -20,14 +15,10 @@ export default function Input({
           "placeholder:text-muted/70",
           "hover:border-text focus:border-text",
           disabled && "opacity-40 cursor-not-allowed",
-          error && "border-red-500 focus:border-red-500",
           className,
         )}
         {...props}
       />
-      {error && (
-        <span className="text-xs text-red-500 font-light">{error}</span>
-      )}
     </div>
   );
 }
