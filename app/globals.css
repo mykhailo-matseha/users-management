@@ -2,13 +2,14 @@
 
 :root {
   --background: #fff;
-  --foreground: #c4c4c4;
+  --border: #c4c4c4;
   --text: #000;
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-text: var(--text);
+  --color-border: var(--border);
   --font-main: var(--font-rubik);
   --font-heading: var(--font-karla);
 }
