@@ -10,7 +10,7 @@ import { useMemo, useState } from "react";
 
 export default function UsersPage() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
-  const { users, deleteUser, addUser, updateUser } = useUsers();
+  const { users, deleteUser } = useUsers();
 
   const filteredUsers = useMemo(() => {
     const searchQuery = filters.searchQuery?.toLowerCase().trim();
@@ -47,7 +47,9 @@ export default function UsersPage() {
 
   return (
     <div className="flex flex-col gap-10">
-      <Heading variation="section">USERS</Heading>
+      <Heading as="h1" variation="section">
+        USERS
+      </Heading>
       <UsersFilter
         filters={filters}
         setFilters={setFilters}

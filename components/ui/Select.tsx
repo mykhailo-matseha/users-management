@@ -96,7 +96,7 @@ export default function Select({
       <Popover.Trigger asChild>
         <div
           className={cn(
-            "w-full min-h-12 min-w-55 px-6 py-3.5 border border-border bg-white text-sm font-light transition-colors select-none",
+            "w-full min-h-12 min-w-55 px-6 py-3.5 border border-border-muted bg-white text-sm font-light transition-colors select-none",
             "flex items-center justify-between gap-3 text-left cursor-pointer",
             "hover:border-text focus:outline-none focus:border-text",
             open && "border-text",
@@ -137,6 +137,8 @@ export default function Select({
 
       <Popover.Portal>
         <Popover.Content
+          side="bottom"
+          avoidCollisions={false}
           align="start"
           sideOffset={-1}
           style={{ width: "var(--radix-popover-trigger-width)" }}
