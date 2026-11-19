@@ -5,6 +5,7 @@
   --border: #c4c4c4;
   --text: #000;
   --muted: #5e626b;
+  --border-muted: #e3e8ee;
 }
 
 @theme inline {
@@ -12,6 +13,7 @@
   --color-text: var(--text);
   --color-border: var(--border);
   --color-muted: var(--muted);
+  --color-border-muted: var(--border-muted);
   --font-main: var(--font-rubik);
   --font-heading: var(--font-karla);
 }
