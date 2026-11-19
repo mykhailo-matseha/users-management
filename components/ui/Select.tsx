@@ -94,9 +94,7 @@ export default function Select({
   return (
     <Popover.Root open={open} onOpenChange={setOpen}>
       <Popover.Trigger asChild>
-        <button
-          type="button"
-          disabled={disabled}
+        <div
           className={cn(
             "w-full min-h-12 min-w-55 px-6 py-3.5 border border-border bg-white text-sm font-light transition-colors select-none",
             "flex items-center justify-between gap-3 text-left cursor-pointer",
@@ -107,22 +105,34 @@ export default function Select({
             className,
           )}
         >
-          <span
-            className={cn(
-              "truncate",
-              !hasValue ? "text-muted/70" : "text-text",
-            )}
-          >
-            {getText()}
-          </span>
-
+          {open ? (
+            <input
+              type="text"
+              autoFocus
+              value={search}
+              size={1}
+              onChange={(e) => setSearch(e.target.value)}
+              onClick={(e) => e.stopPropagation()}
+              placeholder="Type to search..."
+              className="w-full min-w-0 bg-transparent outline-none text-sm font-light text-text placeholder:text-muted/70 p-0"
+            />
+          ) : (
+            <span
+              className={cn(
+                "truncate",
+                !hasValue ? "text-muted/70" : "text-text",
+              )}
+            >
+              {getText()}
+            </span>
+          )}
           <ChevronDown
             className={cn(
               "text-muted transition-transform shrink-0",
               open ? "text-text" : "rotate-180",
             )}
           />
-        </button>
+        </div>
       </Popover.Trigger>
 
       <Popover.Portal>
@@ -134,18 +144,8 @@ export default function Select({
             "bg-white border border-border shadow-md z-50 flex flex-col focus:outline-none",
             open && "border-t-0 border-text",
           )}
+          onOpenAutoFocus={(e) => e.preventDefault()}
         >
-          <div className="p-2">
-            <input
-              type="text"
-              autoFocus
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search..."
-              className="w-full px-3 py-1.5 text-xs border border-border-muted bg-white text-text outline-none focus:border-text placeholder:text-muted/60"
-            />
-          </div>
-
           <ScrollArea.Root className="w-full h-52 overflow-hidden">
             <ScrollArea.Viewport className="w-full h-full">
               <div>
