@@ -44,6 +44,7 @@ function UsersFilter({ filters, setFilters, onReset }: UsersFilterProps) {
     <div className="flex gap-5 items-center">
       <div className="flex gap-3 items-center">
         <Input
+          value={filters.searchQuery}
           placeholder="Search..."
           onChange={(e) => {
             setFilters({

@@ -14,20 +14,24 @@ export default function UsersPage() {
   const filteredUsers = useMemo(() => {
     const searchQuery = filters.searchQuery?.toLowerCase().trim();
     return users.filter((user) => {
-      if (
-        (searchQuery && searchQuery) ||
-        !searchQuery.includes(user.name) ||
-        !searchQuery.includes(user.id) ||
-        !searchQuery.includes(user.department.name) ||
-        !searchQuery.includes(user.country.name) ||
-        !searchQuery.includes(user.status.name)
-      )
-        if (
-          filters.departments.length > 0 &&
-          !filters.departments.includes(user.department.value)
-        ) {
+      if (searchQuery) {
+        const matchesName = user.name.toLowerCase().includes(searchQuery);
+        const matchesDept = user.department.name
+          .toLowerCase()
+          .includes(searchQuery);
+        const matchesCountry = user.country.name
+          .toLowerCase()
+          .includes(searchQuery);
+        if (!matchesName && !matchesDept && !matchesCountry) {
           return false;
         }
+      }
+      if (
+        filters.departments.length > 0 &&
+        !filters.departments.includes(user.department.value)
+      ) {
+        return false;
+      }
       if (filters.country && filters.country !== user.country.value) {
         return false;
       }
