@@ -1,4 +1,5 @@
 "use client";
+import Heading from "@/components/ui/Heading";
 import UsersFilter, {
   DEFAULT_FILTERS,
   FilterState,
@@ -46,6 +47,7 @@ export default function UsersPage() {
 
   return (
     <div className="flex flex-col gap-10">
+      <Heading variation="section">USERS</Heading>
       <UsersFilter
         filters={filters}
         setFilters={setFilters}

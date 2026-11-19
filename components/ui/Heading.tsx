@@ -18,7 +18,8 @@ function Heading({
 }: HeadingProps) {
   const finalClasses = cn(
     `font-normal text-xl `,
-    variation == "section" && `text-2-xl font-karla tracking-[6px] font-medium`,
+    variation == "section" &&
+      `text-2xl font-karla tracking-[6px] font-medium text-center`,
     className,
   );
   return (
