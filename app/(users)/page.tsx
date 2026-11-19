@@ -1,5 +1,7 @@
 "use client";
+import Button from "@/components/ui/Button";
 import Heading from "@/components/ui/Heading";
+import AddUserModal from "@/components/users/AddUserModal";
 import UsersFilter, {
   DEFAULT_FILTERS,
   FilterState,
@@ -11,6 +13,7 @@ import { useMemo, useState } from "react";
 export default function UsersPage() {
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const { users, deleteUser } = useUsers();
+  const [isAddUserOpen, setIsAddUserOpen] = useState(false);
 
   const filteredUsers = useMemo(() => {
     const searchQuery = filters.searchQuery?.toLowerCase().trim();
@@ -50,12 +53,26 @@ export default function UsersPage() {
       <Heading as="h1" variation="section">
         USERS
       </Heading>
-      <UsersFilter
-        filters={filters}
-        setFilters={setFilters}
-        onReset={() => setFilters(DEFAULT_FILTERS)}
-      />
+      <div className="flex gap-2 flex-wrap items-end justify-between">
+        <UsersFilter
+          filters={filters}
+          setFilters={setFilters}
+          onReset={() => setFilters(DEFAULT_FILTERS)}
+        />
+        <Button
+          onClick={() => setIsAddUserOpen(true)}
+          variant="md"
+          className="shrink-0"
+        >
+          Add User
+        </Button>
+      </div>
+
       <UsersTable users={filteredUsers} onDelete={deleteUser} />
+      <AddUserModal
+        isOpen={isAddUserOpen}
+        onClose={() => setIsAddUserOpen(false)}
+      />
     </div>
   );
 }

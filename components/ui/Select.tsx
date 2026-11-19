@@ -143,7 +143,7 @@ export default function Select({
           sideOffset={-1}
           style={{ width: "var(--radix-popover-trigger-width)" }}
           className={cn(
-            "bg-white border border-border shadow-md z-50 flex flex-col focus:outline-none",
+            "bg-white border border-border z-30 flex flex-col focus:outline-none",
             open && "border-t-0 border-text",
           )}
           onOpenAutoFocus={(e) => e.preventDefault()}
