@@ -1,8 +1,10 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { User } from "@/types/user";
 import { INITIAL_USERS } from "@/data/data";
+
+const STORAGE_KEY = "users_management_data";
 
 interface UsersContextType {
   users: User[];
@@ -10,12 +12,33 @@ interface UsersContextType {
   addUser: (userData: Omit<User, "id">) => void;
   updateUser: (updatedUser: User) => void;
 }
+
 const UsersContext = createContext<UsersContextType | undefined>(undefined);
+
 export function UsersProvider({ children }: { children: React.ReactNode }) {
   const [users, setUsers] = useState<User[]>(INITIAL_USERS);
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setTimeout(() => {
+            setUsers(parsed);
+          }, 0);
+        }
+      } catch (e) {
+        console.error("Error: ", e);
+      }
+    }
+  }, []);
 
   const deleteUser = (id: string) => {
-    setUsers((prev) => prev.filter((user) => user.id !== id));
+    setUsers((prev) => {
+      const updated = prev.filter((user) => user.id !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const addUser = (userData: Omit<User, "id">) => {
@@ -23,13 +46,22 @@ export function UsersProvider({ children }: { children: React.ReactNode }) {
       ...userData,
       id: crypto.randomUUID(),
     };
-    setUsers((prev) => [newUser, ...prev]);
+
+    setUsers((prev) => {
+      const updated = [newUser, ...prev];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const updateUser = (updatedUser: User) => {
-    setUsers((prev) =>
-      prev.map((user) => (user.id === updatedUser.id ? updatedUser : user)),
-    );
+    setUsers((prev) => {
+      const updated = prev.map((user) =>
+        user.id === updatedUser.id ? updatedUser : user,
+      );
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+      return updated;
+    });
   };
 
   return (

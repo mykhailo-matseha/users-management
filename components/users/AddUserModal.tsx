@@ -71,7 +71,7 @@ export default function AddUserModal({ isOpen, onClose }: AddUserModalProps) {
   return (
     <div
       onClick={handleBackdropClick}
-      className="fixed inset-0 z-40 flex items-center justify-center bg-[#7D7D7D]/50 p-4"
+      className="fixed inset-0 z-30 flex items-center justify-center bg-[#7D7D7D]/50 p-4"
     >
       <div className="bg-white border border-text py-10 px-15 max-w-180 w-full flex flex-col gap-15">
         <Heading as="h2" variation="section" className="text-center">
