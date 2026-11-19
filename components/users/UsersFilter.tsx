@@ -41,53 +41,58 @@ function UsersFilter({ filters, setFilters, onReset }: UsersFilterProps) {
   };
 
   return (
-    <div className="flex gap-5 items-center">
-      <div className="flex gap-3 items-center">
-        <Input
-          value={filters.searchQuery}
-          placeholder="Search..."
-          onChange={(e) => {
-            setFilters({
-              ...filters,
-              searchQuery: e.target.value,
-            });
-          }}
-        />
-        <Select
-          multiple
-          options={DEPARTMENTS}
-          value={filters.departments}
-          onChange={(newDeps) => handleDepartmentsChange(newDeps)}
-          placeholder="All Departments"
-        />
-        <Select
-          options={COUNTRIES}
-          value={filters.country}
-          onChange={(newCountry) => {
-            setFilters({
-              ...filters,
-              country: newCountry,
-            });
-          }}
-          placeholder="All Counties"
-          disabled={!isEnoughDeps}
-        />
-        <Select
-          options={STATUSES}
-          value={filters.status}
-          onChange={(newStatus) => {
-            setFilters({
-              ...filters,
-              status: newStatus,
-            });
-          }}
-          placeholder="Select Status"
-          disabled={!isEnoughDeps}
-        />
+    <div className="flex flex-col gap-3">
+      <div className="font-light text-sm">
+        Please add at least 3 departmetns to be able to proceed next steps.{" "}
       </div>
-      <Button isIcon={true} onClick={onReset}>
-        <Trash />
-      </Button>
+      <div className="flex gap-5 items-center">
+        <div className="flex gap-3 items-center">
+          <Input
+            value={filters.searchQuery}
+            placeholder="Search..."
+            onChange={(e) => {
+              setFilters({
+                ...filters,
+                searchQuery: e.target.value,
+              });
+            }}
+          />
+          <Select
+            multiple
+            options={DEPARTMENTS}
+            value={filters.departments}
+            onChange={(newDeps) => handleDepartmentsChange(newDeps)}
+            placeholder="All Departments"
+          />
+          <Select
+            options={COUNTRIES}
+            value={filters.country}
+            onChange={(newCountry) => {
+              setFilters({
+                ...filters,
+                country: newCountry,
+              });
+            }}
+            placeholder="All Counties"
+            disabled={!isEnoughDeps}
+          />
+          <Select
+            options={STATUSES}
+            value={filters.status}
+            onChange={(newStatus) => {
+              setFilters({
+                ...filters,
+                status: newStatus,
+              });
+            }}
+            placeholder="Select Status"
+            disabled={!isEnoughDeps}
+          />
+        </div>
+        <Button isIcon={true} onClick={onReset}>
+          <Trash />
+        </Button>
+      </div>
     </div>
   );
 }
